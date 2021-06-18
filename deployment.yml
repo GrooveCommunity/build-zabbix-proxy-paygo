@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: zabbix-proxy
-        image: gcr.io/monitoria-groovetech/zabbix-proxy:TAG_IMAGE
+        image: gcr.io/monitoria-groovetech/zabbix-proxy-paygo:TAG_IMAGE
         ports:
         - containerPort: APP_PORT
         livenessProbe:

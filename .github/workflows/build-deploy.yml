@@ -39,11 +39,11 @@ jobs:
   
     - name: Build Docker Image
       run: |-
-        docker build --build-arg APP_PORT=${{ env.APP_PORT }} --build-arg MAIN_REPO_NAME=${{ env.MAIN_REPO_NAME }} --tag "gcr.io/$PROJECT_ID/$IMAGE:1.0.11.${{ steps.vars.outputs.sha_short }}" .
+        docker build --build-arg APP_PORT=${{ env.APP_PORT }} --build-arg MAIN_REPO_NAME=${{ env.MAIN_REPO_NAME }} --tag "gcr.io/$PROJECT_ID/$IMAGE:1.0.0.${{ steps.vars.outputs.sha_short }}" .
     
     - name: Deploys Docker Image
       run: |
-        docker push "gcr.io/$PROJECT_ID/$IMAGE:1.0.11.${{ steps.vars.outputs.sha_short }}"
+        docker push "gcr.io/$PROJECT_ID/$IMAGE:1.0.0.${{ steps.vars.outputs.sha_short }}"
     
   deploy_k8s:
     name: Deploy Pod and Service
@@ -77,7 +77,7 @@ jobs:
     - name: Replace image tag and APP PORT
       run: |-
         sed -i 's/APP_PORT/${{ env.APP_PORT }}/g' deployment.yml
-        sed -i 's/TAG_IMAGE/1.0.11.${{ steps.vars.outputs.sha_short }}/g' deployment.yml
+        sed -i 's/TAG_IMAGE/1.0.0.${{ steps.vars.outputs.sha_short }}/g' deployment.yml
     
     - name: Create deployment 
       run: |-
