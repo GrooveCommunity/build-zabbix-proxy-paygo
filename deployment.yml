@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zabbix-proxy
+  labels:
+    app: zabbix-proxy
+    version: v1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: zabbix-proxy
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: zabbix-proxy
+        version: v1
+    spec:
+      containers:
+      - name: zabbix-proxy
+        image: gcr.io/monitoria-groovetech/zabbix-proxy:TAG_IMAGE
+        ports:
+        - containerPort: APP_PORT
+        livenessProbe:
+          httpGet:
+            path: /healthy
+            port: APP_PORT
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /healthy
+            port: APP_PORT
+          initialDelaySeconds: 3
+          periodSeconds: 3

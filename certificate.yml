@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: zabbix-proxy
+spec:
+  domains:
+    - zabbixproxy.paygo.noc.grooveops.io

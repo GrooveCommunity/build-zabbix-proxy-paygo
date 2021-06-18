@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: zabbix-proxy
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: lb-zabbix-proxy
+    networking.gke.io/managed-certificates: zabbix-proxy
+    kubernetes.io/ingress.allow-http: "false"
+spec: 
+  rules:
+  - http: 
+     paths: 
+     - path: /healthy
+       backend: 
+        serviceName: zabbix-proxy
+        servicePort: 80
