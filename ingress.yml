@@ -13,5 +13,7 @@ spec:
      - path: /
        pathType: Prefix
        backend: 
-        serviceName: zabbix-proxy
-        servicePort: 80
+        service:
+          name: zabbix-proxy
+          port: 
+           number: 80
