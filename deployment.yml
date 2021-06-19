@@ -28,9 +28,3 @@ spec:
             port: APP_PORT
           initialDelaySeconds: 3
           periodSeconds: 3
-        readinessProbe:
-          httpGet:
-            path: /healthy
-            port: APP_PORT
-          initialDelaySeconds: 3
-          periodSeconds: 3
