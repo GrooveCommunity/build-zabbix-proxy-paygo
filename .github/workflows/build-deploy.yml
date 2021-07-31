@@ -85,7 +85,7 @@ jobs:
     - name: Replace env from secrets
       run: |-
         sed -i 's/PROJECT_ID_ENV/${{ secrets.GKE_NOC_PROJECT }}/g' deployment.yml
-        sed -i 's/TOPIC_ID_METRICS_ENV/${{ secrets.TOPIC_ID_METRICS }}/g' deployment.yml
+        sed -i 's/TOPIC_ID_METRICS_ZABBIX_ENV/${{ secrets.TOPIC_ID_METRICS }}/g' deployment.yml
     
     - name: Create deployment 
       run: |-
